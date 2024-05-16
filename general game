@@ -1,3 +1,4 @@
+//go fuck yourself
 #include "raylib.h"
 #include<unistd.h>
 #include <iostream>  
