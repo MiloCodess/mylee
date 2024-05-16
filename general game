@@ -1,4 +1,3 @@
-//go fuck yourself
 #include "raylib.h"
 #include<unistd.h>
 #include <iostream>  
@@ -38,15 +37,7 @@ int main()
     int ycord5(400);
 
 
-    bool hit{false};
-    bool left{false};
-    bool right(true);
-    int increment{1};
-    int exteriorR{1200};
-    int exteriorL{200};
-    bool back{true};
-    int size{200};
-    bool alive{true};
+    
     bool toggle = false;
     bool red = false;
     bool green = false;
@@ -64,12 +55,15 @@ int main()
     bool ninety = false;
     int attacky = 0;
     int attackx = 0;
+   
     
     //begins loop to start game
     while(WindowShouldClose() == false)
     {
         //Starts the drawing
         BeginDrawing();
+
+
         
 
 
@@ -86,8 +80,141 @@ int main()
         else{
             ClearBackground(WHITE);
         }
+      
+        
+        
+
+         //draws level completion and reset position to middle
+            if (toggle == true){
+                DrawRectangleLines(550, 300, 300, 21, BLACK);
+                
+
+                if (reset == false)
+                {
+                xcord = 700;
+                ycord = 310;
+                reset = true;
+
+                }
+
+            
+               
+                
+                if (red == true)
+                {
 
 
+                    
+                    DrawText("GAME OVER", 640, 230, 20, BLACK);
+                    DrawText("Try again", 520, 330, 17, BLACK);
+                     DrawText("Locked", 820, 330, 17, BLACK);
+                    DrawCircle(550, 310, 10, ORANGE);
+                    DrawCircle(850, 310, 10, BLUE);
+
+                    
+                    
+                    
+                }
+                if (green == true)
+                {
+                    
+                    DrawText("Escaped!!!", 645, 230, 20, BLACK);
+                    DrawText("Try Again", 520, 330, 17, BLACK);
+                    DrawText("Next Level", 820, 330, 17, BLACK);
+                    DrawCircle(550, 310, 10, ORANGE);
+                    DrawCircle(850, 310, 10, BLUE);
+                    
+                    
+
+                }
+
+
+                
+            }
+            
+         //Moves main circle at a slower speed when not toggled
+
+            if (toggle == false){
+            
+            
+                if (IsKeyDown(KEY_W)){
+                    moved = true;
+                    if (ycord > 59)
+                    {
+                    int rando = GetRandomValue(0, 90);
+                    if (rando > 60){
+                        ycord = ycord - 1;
+                    }
+                    }
+                    
+                    
+
+                }
+                if (IsKeyDown(KEY_S)){
+                    moved = true;
+                    if (ycord < 741)
+                    {
+                    int randop = GetRandomValue(0, 90);
+                    if (randop > 60){
+                        ycord = ycord + 1;
+                    }
+                    }
+                    
+                
+
+                }
+                if (IsKeyDown(KEY_D)){
+                    moved = true;
+                    if (xcord < 1341)
+                    {
+                    int randoo = GetRandomValue(0, 90);
+                    if (randoo > 60){
+                        xcord = xcord + 1;
+
+                    }
+                    }
+                    
+                    
+
+                }
+                if (IsKeyDown(KEY_A)){
+                    moved = true;
+                    if(xcord > 59){
+                        int randow = GetRandomValue(0, 90);
+                        if (randow > 60){
+                            xcord = xcord - 1;
+                        }
+                    }
+                    
+
+                }
+
+
+            }
+
+
+        //changes circle to locked x movemenet if toggle == true
+            else if(toggle == true){
+                if (IsKeyDown(KEY_D) && xcord < 850){
+                    int randoo = GetRandomValue(0, 90);
+                    if (randoo > 60){
+                        xcord = xcord + 1;
+
+                    }
+                    
+
+                }
+                if (IsKeyDown(KEY_A) && xcord > 550){
+                    int randow = GetRandomValue(0, 90);
+                    if (randow > 60){
+                        xcord = xcord - 1;
+                    }
+
+                }
+
+                
+
+            }
 
 
 
@@ -295,114 +422,7 @@ int main()
             
 
 
-            //moves enemys
-
-            /*
-
-            if (gather == false)
-            {
-                //moves main
-                if (ycord > ycord3){
-                        int rangot = GetRandomValue(0, 100);
-                        
-                        if (rangot > intensity){
-
-                        ycord3 = ycord3 + 1;
-                        }
-                        
-                    }
-                if (xcord > xcord3){
-                        int googet = GetRandomValue(0, 100);
-                        if (googet > intensity){
-                            xcord3 = xcord3 + 1;
-                        }
-                        
-                        
-                }
-                if (ycord < ycord3){
-                        int hotel = GetRandomValue(0, 100);
-                        if (hotel > intensity){
-                            ycord3 = ycord3 - 1;
-                        }
-                    
-                }             
-                if (xcord < xcord3){
-                        int zipit = GetRandomValue(0, 100);
-                        if (zipit > intensity){
-                            xcord3 = xcord3 - 1;
-
-                        }
-                    
-                }
-                
-                //moves second enemy
-                if (ycord > ycord4){
-                        int rangot = GetRandomValue(0, 100);
-                        
-                        if (rangot > intensity - 5){
-
-                        ycord4 = ycord4 + 1;
-                        }
-                        
-                }
-                if (xcord > xcord4){
-                        int googet = GetRandomValue(0, 100);
-                        if (googet > intensity - 5){
-                            xcord4 = xcord4 + 1;
-                        }
-                        
-                        
-                }
-                if (ycord < ycord4){
-                        int hotel = GetRandomValue(0, 100);
-                        if (hotel > intensity - 5){
-                            ycord4 = ycord4 - 1;
-                        }
-                    
-                }             
-                if (xcord < xcord4){
-                        int zipit = GetRandomValue(0, 100);
-                        if (zipit > intensity - 5){
-                            xcord4 = xcord4 - 1;
-
-                        }
-                    
-                }
-                //moves third enemy
-                if (ycord > ycord5){
-                        int rangot = GetRandomValue(0, 100);
-                        
-                        if (rangot > intensity - 10){
-
-                        ycord5 = ycord5 + 1;
-                        }
-                        
-                }
-                if (xcord > xcord5){
-                        int googet = GetRandomValue(0, 100);
-                        if (googet > intensity - 10){
-                            xcord5 = xcord5 + 1;
-                        }
-                        
-                        
-                }
-                if (ycord < ycord5){
-                        int hotel = GetRandomValue(0, 100);
-                        if (hotel > intensity - 10){
-                            ycord5 = ycord5 - 1;
-                        }
-                    
-                }             
-                if (xcord < xcord5){
-                    int zipit = GetRandomValue(0, 100);
-                    if (zipit > intensity - 10){
-                        xcord5 = xcord5 - 1;
-
-                    }
-
-                }
-            }
-            */
+            
             bool attack1 = false;
             bool attack2 = false;
             bool attack3 = false;
@@ -558,11 +578,12 @@ int main()
 
 
 
-
-
+                
+                
 
                 if ((midpointx == xcord3 && midpointx == xcord4 && midpointx == xcord5) && (midpointy == ycord3 && midpointy == ycord4 && midpointy == ycord5))
                 {
+                    
                     if (ninety == false)
                     {
                                         attackx = attackx + xcord;
@@ -572,6 +593,7 @@ int main()
 
                     }
                     
+
                     stopped = true;
                     gather = false;
                     
@@ -681,25 +703,7 @@ int main()
             
 
                 //checks for enemy circle collision
-            if ( (((xcord3 - 30) < xcord) && ((xcord3 + 30) > xcord)) && ((ycord3 - 30) < ycord) && ((ycord3 + 30) > ycord))
-            { 
-                red = true;
-                toggle = true;
-
-            } 
-            if ( (((xcord4 - 30) < xcord) && ((xcord4 + 30) > xcord)) && ((ycord4 - 30) < ycord) && ((ycord4 + 30) > ycord))
-            { 
-                red = true;
-                toggle = true;
-
-            } 
-            if ( (((xcord5 - 30) < xcord) && ((xcord5 + 30) > xcord)) && ((ycord5 - 30) < ycord) && ((ycord5 + 30) > ycord))
-            { 
-                red = true;
-                toggle = true;
-
-            } 
-
+           
             
 
         }
@@ -707,12 +711,8 @@ int main()
 
 
 
-        //draws main player circle as well a borders
-            DrawCircle(xcord, ycord, 10, BLACK);
-            DrawRectangle(0, 0, 1400, 50, BLACK);
-            DrawRectangle(0, 750, 1400, 50, BLACK);
-            DrawRectangle(0, 0, 50, 1400, BLACK);
-            DrawRectangle(1350, 0, 50, 1400, BLACK);
+        
+            
 
 
 
@@ -721,145 +721,17 @@ int main()
 
 
 
-        //draws level completion and reset position to middle
-            if (toggle == true){
-                DrawRectangleLines(550, 300, 300, 21, BLACK);
-                
-
-                if (reset == false)
-                {
-                xcord = 700;
-                ycord = 310;
-                reset = true;
-
-                }
-
-            
-               
-                
-                if (red == true)
-                {
 
 
-                    
-                    DrawText("GAME OVER", 640, 230, 20, BLACK);
-                    DrawText("Try again", 520, 330, 17, BLACK);
-                     DrawText("Locked", 820, 330, 17, BLACK);
-                    DrawCircle(550, 310, 10, ORANGE);
-                    DrawCircle(850, 310, 10, BLUE);
-
-                    
-                    
-                    
-                }
-                if (green == true)
-                {
-                    
-                    DrawText("Escaped!!!", 645, 230, 20, BLACK);
-                    DrawText("Try Again", 520, 330, 17, BLACK);
-                    DrawText("Next Level", 820, 330, 17, BLACK);
-                    DrawCircle(550, 310, 10, ORANGE);
-                    DrawCircle(850, 310, 10, BLUE);
-                    
-                    
-
-                }
+        DrawCircle(xcord, ycord, 10, BLACK);
 
 
-                
-            }
-            
-
-            
-
-
-        //Moves main circle at a slower speed when not toggled
-
-            if (toggle == false){
-            
-            
-                if (IsKeyDown(KEY_W)){
-                    moved = true;
-                    if (ycord > 59)
-                    {
-                    int rando = GetRandomValue(0, 90);
-                    if (rando > 60){
-                        ycord = ycord - 1;
-                    }
-                    }
-                    
-                    
-
-                }
-                if (IsKeyDown(KEY_S)){
-                    moved = true;
-                    if (ycord < 741)
-                    {
-                    int randop = GetRandomValue(0, 90);
-                    if (randop > 60){
-                        ycord = ycord + 1;
-                    }
-                    }
-                    
-                
-
-                }
-                if (IsKeyDown(KEY_D)){
-                    moved = true;
-                    if (xcord < 1341)
-                    {
-                    int randoo = GetRandomValue(0, 90);
-                    if (randoo > 60){
-                        xcord = xcord + 1;
-
-                    }
-                    }
-                    
-                    
-
-                }
-                if (IsKeyDown(KEY_A)){
-                    moved = true;
-                    if(xcord > 59){
-                        int randow = GetRandomValue(0, 90);
-                        if (randow > 60){
-                            xcord = xcord - 1;
-                        }
-                    }
-                    
-
-                }
-
-
-            }
-
-
-
-        //changes circle to locked x movemenet if toggle == true
-            else if(toggle == true){
-                if (IsKeyDown(KEY_D) && xcord < 850){
-                    int randoo = GetRandomValue(0, 90);
-                    if (randoo > 60){
-                        xcord = xcord + 1;
-
-                    }
-                    
-
-                }
-                if (IsKeyDown(KEY_A) && xcord > 550){
-                    int randow = GetRandomValue(0, 90);
-                    if (randow > 60){
-                        xcord = xcord - 1;
-                    }
-
-                }
-
-                
-
-            }
-
-
-
+        
+        //draws border
+        DrawRectangle(0, 0, 1400, 50, BLACK);
+        DrawRectangle(0, 750, 1400, 50, BLACK);
+        DrawRectangle(0, 0, 50, 1400, BLACK);
+        DrawRectangle(1350, 0, 50, 1400, BLACK);
          //makes replay of the game possible with hitting the left orange circle
             if(toggle == true)
             {
@@ -894,6 +766,9 @@ int main()
                         gather = true;
                          midpointx = 0; 
                          midpointy = 0; 
+                         ninety = false;
+                         attackx = 0;
+                         attacky = 0;
                     }
 
 
@@ -940,6 +815,9 @@ int main()
                         red = false;
                         green = false;
                         reset = false;
+                        if (level3 != true){
+                            
+                        }
                         xcord = 40;
                         ycord = 400;
                         
