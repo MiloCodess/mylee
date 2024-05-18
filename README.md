@@ -1,2 +1,2 @@
 # mylee
-small c++ window game
+small c++ window game, runnable in vscode with proper compiler
