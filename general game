@@ -84,6 +84,7 @@ int main()
         BeginDrawing();
 
 
+
         
 
 
@@ -847,6 +848,8 @@ int main()
         DrawRectangle(0, 750, 1400, 50, BLACK);
         DrawRectangle(0, 0, 50, 1400, BLACK);
         DrawRectangle(1350, 0, 50, 1400, BLACK);
+        DrawText("MYLEE", 570, 10, 40, WHITE);
+        DrawText("by Milo Arjana", 720, 20, 20, WHITE);
          //makes replay of the game possible with hitting the left orange circle
             if(toggle == true)
             {
