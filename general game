@@ -3,6 +3,7 @@
 #include <iostream>  
 #include <vector>  
 #include <cmath>
+#include <list>
 
 int main()
 {
@@ -45,6 +46,46 @@ int main()
     bool moved = false;
     bool level1 = true;
     bool level2 = false;
+    bool fallen = false;
+
+
+    int menux = 100;
+    int menuy = -300;
+    int menuy1 = 800;
+    int menuy2 = -300;
+    int menuy3 = 800;
+    int menuy4 = -300;
+    int menuy5 = 800;
+    int menuy6 = -300;
+    int menuy7 = 800;
+    int menuy8 = -300;
+    int menuy9 = 800;
+    int menuy10 = -300;
+    int menuy11 = 800;
+    int menuy12 = -300;
+    int menuy13 = 800;
+    int menuy14 = -300;
+    int menuy15 = 800;
+    int menuy16 = -300;
+    int menuy17 = 800;
+    int menuy18 = -300;
+    int menuy19 = 800;
+    int menuy20 = -300;
+    int menuy21 = 800;
+    int menuy22 = -300;
+    int menuy23 = 800;
+
+    int menuspeed = 0;
+
+    int  rectangles[24] = {
+        menuy, menuy1, menuy2, menuy3, menuy4, menuy5, menuy6, menuy7, menuy8, menuy9, menuy10,
+        menuy11, menuy12, menuy13, menuy14, menuy15, menuy16, menuy17, menuy18, menuy19, menuy20,
+        menuy21, menuy22, menuy23
+        
+    };
+
+
+
 
     int intensity1 = 80;
     int intensity2 = 80;
@@ -75,7 +116,7 @@ int main()
             bool first = false;
             bool second = false;
             bool third = false;
-   
+   bool menu = false;
     
     //begins loop to start game
     while(WindowShouldClose() == false)
@@ -242,7 +283,7 @@ int main()
         //Initializes the enemy circle to specfic location, color, and radius, as well as moving it
         //also initializes goals and checks for collisions
 
-        if (level1 == true){
+        if (level1 == true && menu == false){
           
         
             if (moved == false){
@@ -327,7 +368,7 @@ int main()
 
 
         //starts LEVEL #2, initializes walls and checks for collisons as well as enemy circle and goal
-        if (toggle == false && level2 == true)
+        if (toggle == false && level2 == true && menu == false)
 
         {
                 
@@ -436,7 +477,7 @@ int main()
        
        
         //starts LEVEL 3#
-        if (toggle == false && level3 == true){
+        if (toggle == false && level3 == true && menu == false){
 
 
 
@@ -838,8 +879,11 @@ int main()
 
 
 
+        if (menu == false){
+             DrawCircle(xcord, ycord, 10, BLACK);
 
-        DrawCircle(xcord, ycord, 10, BLACK);
+        }
+    
 
 
         
@@ -850,6 +894,24 @@ int main()
         DrawRectangle(1350, 0, 50, 1400, BLACK);
         DrawText("MYLEE", 570, 10, 40, WHITE);
         DrawText("by Milo Arjana", 720, 20, 20, WHITE);
+        
+        if (menu != true){
+            if (level1 == true){
+             DrawText("LEVEL 1", 50, 20, 20, WHITE );
+
+            }
+            if (level2 == true){
+                DrawText("LEVEL 2", 50, 20, 20, WHITE );
+
+            }
+            if (level3 == true){
+                DrawText("LEVEL 3", 50, 20, 20, WHITE );
+
+        }
+
+        }
+        
+       
          //makes replay of the game possible with hitting the left orange circle
             if(toggle == true)
             {
@@ -973,6 +1035,275 @@ int main()
                
             
 
+            }
+
+            if (IsKeyDown(KEY_M)){
+                menu = true;
+
+            }
+
+            //makes a menu to access levels
+
+            if (menu == true){
+                DrawText("MENU", 50, 20, 20, WHITE );
+                toggle = false;
+                ClearBackground(WHITE);
+
+
+                int counter = 1;
+                if (fallen == false){
+
+                    /*
+                    if (rectangles[counter] < 250){
+                        int randopuld = GetRandomValue(0, 90);
+                        if (randopuld > 80){
+                            rectangles[counter] += 10;
+                            
+                        }
+                        
+                        
+                        
+                            
+                        
+
+                        
+
+
+                        
+
+                    }   
+                    if (rectangles[counter] == 250){
+                        counter = counter + 1;
+                    }
+                    */
+                    
+                    //controls top half of menu
+                    if (menuy < 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy = menuy + 50;
+                        }
+
+                    }                  
+                    if (menuy2 < 250 && menuy == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy2 = menuy2 + 50;
+                        }
+
+                    }
+                    if (menuy4 < 250  && menuy2 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy4 = menuy4 + 50;
+                        }
+
+                    }
+                    if (menuy6 < 250  && menuy4 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy6 = menuy6 + 50;
+                        }
+
+                    }
+                    
+                    if (menuy8 < 250  && menuy6 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy8 = menuy8 + 25;
+                        }
+
+                    }
+                    if (menuy10 < 250  && menuy8 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy10 = menuy10 + 25;
+                        }
+
+                    }
+                    if (menuy12 < 250  && menuy10 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy12 = menuy12 + 25;
+                        }
+
+                    }
+                    if (menuy14 < 250  && menuy12 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy14 = menuy14 + 25;
+                        }
+
+                    }
+                    
+                    if (menuy16 < 250  && menuy14 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy16 = menuy16 + 10;
+                        }
+
+                    }
+                    if (menuy18 < 250  && menuy16 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy18 = menuy18 + 10;
+                        }
+
+                    }
+                    if (menuy20 < 250  && menuy18 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy20 = menuy20 + 10;
+                        }
+
+                    }
+                    if (menuy22 < 250  && menuy20 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy22 = menuy22 + 10;
+                        }
+
+                    }
+
+
+                    
+                    
+                    //controls bottom half
+                    if (menuy1 > 250  && menuy22 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy1 = menuy1- 50;
+                        }
+
+                    } 
+                    if (menuy3 > 250  && menuy1 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy3 = menuy3- 50;
+                        }
+
+                    }
+                    if (menuy5 > 250  && menuy3 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy5 = menuy5- 50;
+                        }
+
+                    }
+                    if (menuy7 > 250  && menuy5 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy7 = menuy7- 50;
+                        }
+
+                    } 
+                    
+                    if (menuy9 > 250  && menuy7 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy9 = menuy9- 25;
+                        }
+
+                    }   
+                    if (menuy11 > 250  && menuy9 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy11 = menuy11- 25;
+                        }
+
+                    }
+                    if (menuy13 > 250  && menuy11 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy13 = menuy13- 25;
+                        }
+
+                    }  
+                    if (menuy15 > 250  && menuy13 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy15 = menuy15- 25;
+                        }
+
+                    } 
+                    
+                    if (menuy17 > 250  && menuy15 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy17 = menuy17- 10;
+                        }
+
+                    }
+                    if (menuy19 > 250  && menuy17 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy19 = menuy19- 10;
+                        }
+
+                    }
+                    if (menuy21 > 250  && menuy19 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy21 = menuy21- 10;
+                        }
+
+                    }
+                    if (menuy23 > 250  && menuy21 == 250 ){
+                        int randopul = GetRandomValue(0, 90);
+                        if (randopul > menuspeed){
+                            menuy23 = menuy23- 10;
+                        }
+
+                    }
+
+
+                      
+
+                    
+                    
+
+                }
+
+
+               
+
+
+                DrawRectangle(380 + menux, menuy, 20, 300, BLACK);
+                DrawRectangle(400 + menux, menuy1, 20, 300, BLACK);
+                DrawRectangle(420 + menux, menuy2, 20, 300, BLACK);
+                DrawRectangle(440 + menux, menuy3, 20, 300, BLACK);
+
+
+                DrawRectangle(460 + menux, menuy4, 20, 300, BLACK);
+                DrawRectangle(480 + menux, menuy5, 20, 300, BLACK);
+                DrawRectangle(500 + menux, menuy6, 20, 300, BLACK);
+                DrawRectangle(520 + menux, menuy7, 20, 300, BLACK);
+
+
+                DrawRectangle(540 + menux, menuy8, 20, 300, BLACK);
+                DrawRectangle(560 + menux, menuy9, 20, 300, BLACK);
+                DrawRectangle(580 + menux, menuy10, 20, 300, BLACK);
+                DrawRectangle(600 + menux, menuy11, 20, 300, BLACK);
+
+
+
+
+                DrawRectangle(620 + menux, menuy12, 20, 300, BLACK);
+                DrawRectangle(640 + menux, menuy13, 20, 300, BLACK);
+                DrawRectangle(660 + menux, menuy14, 20, 300, BLACK);
+                DrawRectangle(680 + menux, menuy15, 20, 300, BLACK);
+
+                DrawRectangle(700 + menux, menuy16, 20, 300, BLACK);
+                DrawRectangle(720 + menux, menuy17, 20, 300, BLACK);
+                DrawRectangle(740 + menux, menuy18, 20, 300, BLACK);
+                DrawRectangle(760 + menux, menuy19, 20, 300, BLACK);
+
+                DrawRectangle(780 + menux, menuy20, 20, 300, BLACK);
+                DrawRectangle(800 + menux, menuy21, 20, 300, BLACK);
+                DrawRectangle(820 + menux, menuy22, 20, 300, BLACK);
+                DrawRectangle(840 + menux, menuy23, 20, 300, BLACK);
+
+                DrawText("LEVEL SELECT", 640, 260, 20, WHITE);
             }
 
             
