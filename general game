@@ -84,6 +84,9 @@ int main()
         
     };
 
+    int cursorx = 530;
+    int cursory = 330;
+
 
 
 
@@ -111,12 +114,17 @@ int main()
     bool attarget1 = false;
     bool attarget2 = false;
     bool attarget3 = false;
+    bool level1done = false;
+    bool level2done = false;
+    bool level3done = false;
 
            
             bool first = false;
             bool second = false;
             bool third = false;
    bool menu = false;
+
+   bool key_toggled = false;
     
     //begins loop to start game
     while(WindowShouldClose() == false)
@@ -345,6 +353,7 @@ int main()
                 if ((1300 < xcord && xcord < 1350) && (400 < ycord && ycord < 450))
                 {
                 green = true;
+                level1done = true;
                  
                 toggle = true;
                 
@@ -449,6 +458,7 @@ int main()
                 green = true;
                  
                 toggle = true;
+                level2done = true;
                 
             }
 
@@ -832,6 +842,7 @@ int main()
             if ((1300 < xcord && xcord < 1350) && (400 < ycord && ycord < 450))
             {
                 green = true;
+                level3done = true;
                  
                 toggle = true;
                 
@@ -1020,10 +1031,8 @@ int main()
                         red = false;
                         green = false;
                         reset = false;
-                        if (level3 != true){
-                            
-                        }
-                        xcord = 40;
+                        
+                        xcord = 90;
                         ycord = 400;
                         
                         
@@ -1259,7 +1268,7 @@ int main()
 
                       
 
-                    
+                   
                     
 
                 }
@@ -1304,6 +1313,138 @@ int main()
                 DrawRectangle(840 + menux, menuy23, 20, 300, BLACK);
 
                 DrawText("LEVEL SELECT", 640, 260, 20, WHITE);
+                if (menuy23 == 250){
+
+                        if (level1done == true){
+                             DrawCircle(530, 330, 15, GREEN);
+
+                        }
+                        else if (level1done == false){
+                            DrawCircle(530, 330, 15, RED);
+
+                        }
+
+                        if (level2done == true){
+                            DrawCircle(580, 330, 15, GREEN);
+
+                        } else if (level2done == false){
+                            DrawCircle(580, 330, 15, RED);
+                        }
+
+                        if (level3done == true){
+                              DrawCircle(630, 330, 15, GREEN);
+
+                        } else if (level3done == false){
+                              DrawCircle(630, 330, 15, RED);
+                        }
+
+                        
+                        
+                      
+                        DrawCircle(680, 330, 15, RED);
+
+
+
+
+
+                        DrawCircleLines(cursorx, cursory, 20, WHITE );
+
+                        if (IsKeyDown(KEY_D)){
+                            if (key_toggled == false){
+                                 cursorx += 50;
+                            }
+                            key_toggled = true;
+
+
+                        }
+                        if (IsKeyDown(KEY_A)){
+                            if (key_toggled == false){
+                                 cursorx -= 50;
+                            }
+                            key_toggled = true;
+
+
+                        }
+
+
+                        if (IsKeyDown(KEY_D) == false && IsKeyDown(KEY_A) == false){
+                            key_toggled = false;
+                        }
+
+                        if (IsKeyDown(KEY_SPACE)){
+                            if (cursorx == 530){
+                                menu = false;
+                                red = false;
+                                green = false;
+                                reset = false;
+                                toggle = false;
+                                
+                                xcord = 90;
+                                ycord = 400;
+                                level1 = true;
+                                level2 = false;
+                                level3 = false;
+
+                            }
+                            if (cursorx == 580){
+                                menu = false;
+                                red = false;
+                                green = false;
+                                reset = false;
+                                toggle = false;
+                                 xcord3 = 1350;
+                                ycord3 = 400;
+                                
+                                xcord = 90;
+                                ycord = 400;
+                                level2 = true;
+                                level1 = false;
+                                level3 = false;
+                            }
+                            if (cursorx == 630){
+                                menu = false;
+                                red = false;
+                                green = false;
+                                reset = false;
+                                toggle = false;
+                                
+                                xcord = 90;
+                                ycord = 400;
+                                xcord3 = 700;
+                                ycord3 = 610;
+
+                                xcord4 = 1200;
+                                ycord4 = 610;
+
+                                xcord5 = 900;
+                                ycord5 = 100;
+                                rapid = 30;
+                                ninety = false;
+                                stopped = false;
+                                fart = true;
+
+                                gather = true;
+                                midpointx = 0; 
+                                midpointy = 0; 
+                                attackx = 0;
+                                attacky = 0;
+                                there1 = false;
+                                there2 = false;
+                                attarget1 = false;
+                                attarget2 = false;
+                                attarget3 = false;
+                                level3 = true;
+                                level1 = false;
+                                level2 = false;
+                            }
+
+
+                        }
+
+
+
+                        
+                }
             }
 
             
