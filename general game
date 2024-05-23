@@ -6,36 +6,6 @@
 #include <list>
 
 
-void menu_reset(){
-    int menux = 100;
-    int menuy = -300;
-    int menuy1 = 800;
-    int menuy2 = -300;
-    int menuy3 = 800;
-    int menuy4 = -300;
-    int menuy5 = 800;
-    int menuy6 = -300;
-    int menuy7 = 800;
-    int menuy8 = -300;
-    int menuy9 = 800;
-    int menuy10 = -300;
-    int menuy11 = 800;
-    int menuy12 = -300;
-    int menuy13 = 800;
-    int menuy14 = -300;
-    int menuy15 = 800;
-    int menuy16 = -300;
-    int menuy17 = 800;
-    int menuy18 = -300;
-    int menuy19 = 800;
-    int menuy20 = -300;
-    int menuy21 = 800;
-    int menuy22 = -300;
-    int menuy23 = 800;
-
-    int menuspeed = 0;
-
-}
 
 int main()
 {
@@ -79,6 +49,7 @@ int main()
     bool level1 = true;
     bool level2 = false;
     bool fallen = false;
+    bool devaccess = false;
 
 
     int menux = 100;
@@ -109,12 +80,7 @@ int main()
 
     int menuspeed = 0;
 
-    int  rectangles[24] = {
-        menuy, menuy1, menuy2, menuy3, menuy4, menuy5, menuy6, menuy7, menuy8, menuy9, menuy10,
-        menuy11, menuy12, menuy13, menuy14, menuy15, menuy16, menuy17, menuy18, menuy19, menuy20,
-        menuy21, menuy22, menuy23
-        
-    };
+   
 
     int cursorx = 530;
     int cursory = 330;
@@ -123,12 +89,14 @@ int main()
 
 
     int intensity1 = 80;
-    int intensity2 = 80;
+    int intensity2 = 90;
     int intensity3 = 10;
     int intensityspew = 20;
 
     int moving = 0;
     bool level3 = false;
+    bool level4 = false;
+    bool level5 = false;
     bool gather = false;
     int rapid = 30;
     int midpointx = 0; 
@@ -149,14 +117,37 @@ int main()
     bool level1done = false;
     bool level2done = false;
     bool level3done = false;
+    bool level4done = false;
+    bool level5done = false;
+    bool ability1 = false;
 
-           
-            bool first = false;
-            bool second = false;
-            bool third = false;
+        
    bool menu = false;
 
    bool key_toggled = false;
+
+   int ballx1 = 1000;
+   int ballx2 = 800;
+   int ballx3 = 950;
+   int ballx4 = 850;
+   int ballx5 = 1050;
+   int ballx6 = 800;
+
+
+   int bally1 = 500;
+   int bally2 = 550;
+   int bally3 = 450;
+   int bally4 = 300;
+   int bally5 = 350;
+   int bally6 = 450;
+
+
+            
+
+
+
+
+  
 
    
     
@@ -324,6 +315,8 @@ int main()
 
         //Initializes the enemy circle to specfic location, color, and radius, as well as moving it
         //also initializes goals and checks for collisions
+
+        //STARTS LEVEL 1
 
         if (level1 == true && menu == false){
           
@@ -877,6 +870,8 @@ int main()
             {
                 green = true;
                 level3done = true;
+                level3 = false;
+                level4 = true;
                  
                 toggle = true;
                 
@@ -915,8 +910,27 @@ int main()
 
         
             
+        //starts level 4
+        if (toggle == false && menu == false && level4 == true){
+
+        
+            DrawCircle(900, 400, 50, BLUE);
 
 
+
+            DrawCircle(ballx1, bally1, 10, BLUE);
+            DrawCircle(ballx2, bally2, 10, BLUE);
+
+            DrawCircle(ballx3, bally3, 10, BLUE);
+            DrawCircle(ballx4, bally4, 10, BLUE);
+
+            DrawCircle(ballx5, bally5, 10, BLUE);
+            DrawCircle(ballx6, bally6, 10, BLUE);
+
+
+
+
+        }
 
            
         
@@ -940,6 +954,7 @@ int main()
         DrawText("MYLEE", 570, 10, 40, WHITE);
         DrawText("by Milo Arjana", 720, 20, 20, WHITE);
         
+        //makes menu
         if (menu != true){
             if (level1 == true){
              DrawText("LEVEL 1", 50, 20, 20, WHITE );
@@ -1403,6 +1418,14 @@ int main()
 
                         }
 
+                        if (IsKeyDown(KEY_I)&& IsKeyDown(KEY_O) && IsKeyDown(KEY_P)){
+                           level1done = true;
+                           level2done = true;
+                           level3done = true;
+                           level4done = true;
+                           level5done = true;
+                        }
+
 
                         if (IsKeyDown(KEY_D) == false && IsKeyDown(KEY_A) == false){
                             key_toggled = false;
@@ -1427,7 +1450,7 @@ int main()
                             }
                             if (level1done == true){
                                 if (cursorx == 580){
-                                    menu_reset();
+                                   
                                     menu = false;
                                     red = false;
                                     green = false;
@@ -1446,7 +1469,7 @@ int main()
                             }
                             if (level2done == true){
                                 if (cursorx == 630){
-                                menu_reset();
+                                
                                 menu = false;
                                 red = false;
                                 green = false;
