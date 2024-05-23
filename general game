@@ -1376,6 +1376,9 @@ int main()
                         
                       
                         DrawCircle(680, 330, 15, RED);
+                        DrawText("1",527, 319, 25, WHITE);
+                        DrawText("2",573, 319, 25, WHITE);
+                        DrawText("3",623, 319, 25, WHITE);
 
 
 
