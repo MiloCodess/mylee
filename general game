@@ -5,6 +5,38 @@
 #include <cmath>
 #include <list>
 
+
+void menu_reset(){
+    int menux = 100;
+    int menuy = -300;
+    int menuy1 = 800;
+    int menuy2 = -300;
+    int menuy3 = 800;
+    int menuy4 = -300;
+    int menuy5 = 800;
+    int menuy6 = -300;
+    int menuy7 = 800;
+    int menuy8 = -300;
+    int menuy9 = 800;
+    int menuy10 = -300;
+    int menuy11 = 800;
+    int menuy12 = -300;
+    int menuy13 = 800;
+    int menuy14 = -300;
+    int menuy15 = 800;
+    int menuy16 = -300;
+    int menuy17 = 800;
+    int menuy18 = -300;
+    int menuy19 = 800;
+    int menuy20 = -300;
+    int menuy21 = 800;
+    int menuy22 = -300;
+    int menuy23 = 800;
+
+    int menuspeed = 0;
+
+}
+
 int main()
 {
     
@@ -125,6 +157,8 @@ int main()
    bool menu = false;
 
    bool key_toggled = false;
+
+   
     
     //begins loop to start game
     while(WindowShouldClose() == false)
@@ -1372,6 +1406,7 @@ int main()
                         }
 
                         if (IsKeyDown(KEY_SPACE)){
+
                             if (cursorx == 530){
                                 menu = false;
                                 red = false;
@@ -1384,24 +1419,31 @@ int main()
                                 level1 = true;
                                 level2 = false;
                                 level3 = false;
+                                
 
                             }
-                            if (cursorx == 580){
-                                menu = false;
-                                red = false;
-                                green = false;
-                                reset = false;
-                                toggle = false;
-                                 xcord3 = 1350;
-                                ycord3 = 400;
-                                
-                                xcord = 90;
-                                ycord = 400;
-                                level2 = true;
-                                level1 = false;
-                                level3 = false;
+                            if (level1done == true){
+                                if (cursorx == 580){
+                                    menu_reset();
+                                    menu = false;
+                                    red = false;
+                                    green = false;
+                                    reset = false;
+                                    toggle = false;
+                                    xcord3 = 1350;
+                                    ycord3 = 400;
+                                    
+                                    xcord = 90;
+                                    ycord = 400;
+                                    level2 = true;
+                                    level1 = false;
+                                    level3 = false;
+                                }
+
                             }
-                            if (cursorx == 630){
+                            if (level2done == true){
+                                if (cursorx == 630){
+                                menu_reset();
                                 menu = false;
                                 red = false;
                                 green = false;
@@ -1437,6 +1479,9 @@ int main()
                                 level1 = false;
                                 level2 = false;
                             }
+
+                            }
+                            
 
 
                         }
